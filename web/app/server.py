@@ -7,22 +7,22 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    return app.send_static_file('index.html')
+    return app.send_static_file('index_ini.html')
 
 
 @app.route('/home', methods=['GET'])
-def home():
+def inicio():
     return app.send_static_file('home_ini.html')
 
 
 @app.route('/login', methods=['GET'])
-def login():
+def entrar():
     return app.send_static_file('login.html')
 
 
 @app.route('/signup', methods=['GET'])
-def signup():
-    return app.send_static_file('signup.html')
+def registrarse():
+    return app.send_static_file('signup_ini(1).html')
 
 
 @app.route('/processLogin', methods=['GET', 'POST'])
@@ -34,16 +34,16 @@ def processLogin():
               if value is None:
                   missing.append(field)
        if missing:
-              return "Warning: Some fields are missing"
+              return "Falta completar algunos campos"
 
 
        return '<!DOCTYPE html> ' \
            '<html lang="es">' \
            '<head>' \
-           '<title> Home - SocNet </title>' \
+           '<title> Inicio - Me doy maña </title>' \
            '</head>' \
            '<body> <div id ="container">' \
-		   '<a href="/"> SocNet </a> | <a href="home"> Home </a> | <a href="login"> Log In </a> | <a href="signup"> Sign Up </a>' \
+		   '<a href="/"> Me doy maña </a> | <a href="home"> Inicio </a> | <a href="login"> Entrar </a> | <a href="signup"> Registrarse </a>' \
            '<h1>Data from Form: Login</h1>' \
 	       '<form><label>email: ' + request.form['email'] + \
 	       '</label><br><label>passwd: ' + request.form['passwd'] + \
@@ -68,7 +68,7 @@ def processSignup():
            '<title> Inicio - Me doy maña </title>' \
            '</head>' \
            '<body> <div id ="container">' \
-		   '<a href="/"> Me doy maña </a> | <a href="home"> Inicio </a> | <a href="login"> EntRAR </a> | <a href="signup"> Registrarse </a>' \
+		   '<a href="/"> Me doy maña </a> | <a href="home"> Inicio </a> | <a href="login"> Entrar </a> | <a href="signup"> Registrarse </a>' \
            '<h1>Data from Form: Sign Up</h1>' \
            '<form><label>name: ' + request.form['nickname'] + \
 	       '</label><br><label>email: ' + request.form['email'] + \
