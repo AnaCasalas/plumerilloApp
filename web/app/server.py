@@ -70,7 +70,7 @@ def processSignup():
            '<body> <div id ="container">' \
 		   '<a href="/"> Me doy maña </a> | <a href="home"> Inicio </a> | <a href="login"> Entrar </a> | <a href="signup"> Registrarse </a>' \
            '<h1>Data from Form: Sign Up</h1>' \
-           '<form><label>name: ' + request.form['nickname'] + \
+           '<form><label>name: ' + request.form['name'] + \
 	       '</label><br><label>email: ' + request.form['email'] + \
 	       '</label><br><label>passwd: ' + request.form['passwd'] + \
 	       '</label><br><label>confirm: ' + request.form['confirm'] + \
@@ -81,30 +81,30 @@ def processSignup():
 @app.route('/processHome', methods=['GET', 'POST'])
 def processHome():
 	missing = []
-	fields = ['message', 'last', 'post_submit']
+	fields = ['publicacion', 'last', 'post_submit']
 	for field in fields:
 		value = request.form.get(field, None)
 		if value is None:
 			missing.append(field)
 	if missing:
-		return "Warning: Some fields are missing"
+		return "Hay campos vacios"
 
 	return '<!DOCTYPE html> ' \
            '<html lang="es">' \
            '<head>' \
-           '<title> Home - SocNet </title>' \
+           '<title> Inicio - Me doy maña </title>' \
            '</head>' \
            '<body> <div id="container">' \
-		   '<a href="/"> SocNet </a> | <a href="home"> Home </a> | <a href="login"> Log In </a> | <a href="signup"> Sign Up </a>' \
+		   '<a href="/"> Me doy maña </a> | <a href="home"> Inicio </a> | <a href="login"> Entrar </a> | <a href="signup"> Registrarse </a>' \
            '<h1>Hi, How are you?</h1>' \
                 	'<form action="processHome" method="post" name="home"> ' \
-			'<label for="message">Say something:</label><div class="inputs">' \
-			'<input id="message" maxlength="140" name="message" size="30" type="text" value=""/>' \
-			'<input id="last" type="hidden" name="last" value="' + request.form['last'] + '<br>'+ request.form['message'] + '">' \
+			'<label for="publicacion">Describe lo que necesitas</label><div class="inputs">' \
+			'<input id="publicacion" maxlength="140" name="publicacion" size="128" type="text" value=""/>' \
+			'<input id="last" type="hidden" name="last" value="' + request.form['last'] + '<br>'+ request.form['publicacion'] + '">' \
 	                 '</div>' \
                     	'<div class="inputs">' \
                         '<input id="post_submit" name="post_submit" type="submit" value="Post!"/>' \
-           		'<br><br>Previous Posts: <br>' + request.form['last'] + '<br>' +request.form['message'] + \
+           		'<br><br>Previous Posts: <br>' + request.form['last'] + '<br>' +request.form['publicacion'] + \
                 	'</form>' \
             		'</div></div>' \
            '</body>' \
