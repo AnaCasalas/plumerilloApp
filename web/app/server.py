@@ -12,7 +12,7 @@ def index():
 
 @app.route('/home', methods=['GET'])
 def home():
-    return app.send_static_file('home.html')
+    return app.send_static_file('home_ini.html')
 
 
 @app.route('/login', methods=['GET'])
@@ -54,23 +54,23 @@ def processLogin():
 @app.route('/processSignup', methods=['GET', 'POST'])
 def processSignup():
        missing = []
-       fields = ['nickname', 'email', 'passwd','confirm', 'signup_submit']
+       fields = ['name', 'lastname', 'doc','email', 'phone', 'passwd', 'repeat_passwd', 'birth_date', 'signup_submit']
        for field in fields:
               value = request.form.get(field, None)
               if value is None:
                      missing.append(field)
        if missing:
-              return "Warning: Some fields are missing"
+              return "Debe llenar todos los espacios"
 
        return '<!DOCTYPE html> ' \
            '<html lang="es">' \
            '<head>' \
-           '<title> Home - SocNet </title>' \
+           '<title> Inicio - Me doy maña </title>' \
            '</head>' \
            '<body> <div id ="container">' \
-		   '<a href="/"> SocNet </a> | <a href="home"> Home </a> | <a href="login"> Log In </a> | <a href="signup"> Sign Up </a>' \
+		   '<a href="/"> Me doy maña </a> | <a href="home"> Inicio </a> | <a href="login"> EntRAR </a> | <a href="signup"> Registrarse </a>' \
            '<h1>Data from Form: Sign Up</h1>' \
-           '<form><label>Nickame: ' + request.form['nickname'] + \
+           '<form><label>name: ' + request.form['nickname'] + \
 	       '</label><br><label>email: ' + request.form['email'] + \
 	       '</label><br><label>passwd: ' + request.form['passwd'] + \
 	       '</label><br><label>confirm: ' + request.form['confirm'] + \
