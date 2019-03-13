@@ -1,6 +1,5 @@
 # -*- coding: iso-8859-15 -*-
 
-
 from flask import Flask, request
 app = Flask(__name__)
 
