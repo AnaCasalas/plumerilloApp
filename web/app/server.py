@@ -4,13 +4,13 @@ from flask import Flask , request
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/index', methods=['GET'])
 def index():
     return app.send_static_file('index_ini.html')
 
 
 @app.route('/home', methods=['GET'])
-def inicio():
+def home():
     return app.send_static_file('home_ini.html')
 
 
